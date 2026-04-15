@@ -1,0 +1,136 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Performance Settings">
+
+        <SwitchPreferenceCompat
+            app:key="auto_boost"
+            app:title="Auto Boost"
+            app:summary="Automatically optimize performance when gaming"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="game_mode"
+            app:title="Game Mode"
+            app:summary="Automatically detect games and optimize"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="fps_counter"
+            app:title="FPS Counter"
+            app:summary="Show FPS overlay during gaming"
+            app:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            app:key="floating_button"
+            app:title="Floating Boost Button"
+            app:summary="Show floating boost button for quick access"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Battery & Power">
+
+        <Preference
+            app:key="battery_mode"
+            app:title="Battery Mode"
+            app:summary="Select battery optimization mode" />
+
+        <SwitchPreferenceCompat
+            app:key="auto_battery_optimization"
+            app:title="Auto Battery Optimization"
+            app:summary="Automatically adjust battery settings"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="temperature_control"
+            app:title="Temperature Control"
+            app:summary="Monitor and control device temperature"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Network Settings">
+
+        <SwitchPreferenceCompat
+            app:key="network_optimization"
+            app:title="Network Optimization"
+            app:summary="Optimize network settings for gaming"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="dns_optimization"
+            app:title="DNS Optimization"
+            app:summary="Use fastest DNS servers"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="background_network_block"
+            app:title="Block Background Network"
+            app:summary="Block background apps from using network"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Notifications">
+
+        <SwitchPreferenceCompat
+            app:key="boost_notifications"
+            app:title="Boost Notifications"
+            app:summary="Show notifications when boost is active"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="temperature_warnings"
+            app:title="Temperature Warnings"
+            app:summary="Alert when device gets too hot"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="battery_warnings"
+            app:title="Battery Warnings"
+            app:summary="Alert when battery is low"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="System">
+
+        <Preference
+            app:key="permissions"
+            app:title="Permissions"
+            app:summary="Manage app permissions" />
+
+        <SwitchPreferenceCompat
+            app:key="root_mode"
+            app:title="Root Mode (Advanced)"
+            app:summary="Enable advanced features for rooted devices"
+            app:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            app:key="auto_start"
+            app:title="Auto Start"
+            app:summary="Start automatically on device boot"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="About">
+
+        <Preference
+            app:key="about"
+            app:title="About"
+            app:summary="App information and version" />
+
+        <Preference
+            app:key="privacy_policy"
+            app:title="Privacy Policy"
+            app:summary="View privacy policy" />
+
+        <Preference
+            app:key="rate_app"
+            app:title="Rate App"
+            app:summary="Rate this app on Google Play" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
