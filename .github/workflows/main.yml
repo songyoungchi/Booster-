@@ -4,7 +4,7 @@ name: Build ARMv7 APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:   # امکان اجرای دستی از تب Actions
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,20 +20,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
+      - name: Setup Android SDK (command-line tools only)
         uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platforms;android-34
-            build-tools;34.0.0
-            platforms;android-24
+        # بسته را اینجا نمی‌دهیم تا خطا ندهد
+        # packages رو می‌تونیم خالی بگذاریم
+
+      - name: Install required SDK packages
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "platforms;android-24"
 
       - name: Make gradlew executable
         run: chmod +x gradlew
 
       - name: Force armeabi-v7a ABI only
         run: |
-          # این دستور بعد از خط defaultConfig { بلوک ndk را اضافه می‌کند
           sed -i "/defaultConfig {/a \        ndk { abiFilters 'armeabi-v7a' }" app/build.gradle
 
       - name: Build debug APK
