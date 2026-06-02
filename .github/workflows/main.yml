@@ -4,7 +4,7 @@ name: Build ARMv7 APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch:   # اجرای دستی
 
 jobs:
   build:
@@ -20,18 +20,27 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK (command-line tools only)
+      - name: Setup Android SDK (command-line tools)
         uses: android-actions/setup-android@v3
-        # بسته را اینجا نمی‌دهیم تا خطا ندهد
-        # packages رو می‌تونیم خالی بگذاریم
 
       - name: Install required SDK packages
         run: |
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-34" "build-tools;34.0.0" "platforms;android-24"
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
+      - name: Setup Gradle (temporary installation for wrapper generation)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.7   # نسخه‌ای که با Kotlin 1.9+ سازگار است
+
+      - name: Generate Gradle Wrapper (if missing)
+        run: |
+          if [ ! -f gradlew ]; then
+            gradle wrapper --gradle-version 8.7
+            chmod +x gradlew
+          else
+            chmod +x gradlew
+          fi
 
       - name: Force armeabi-v7a ABI only
         run: |
